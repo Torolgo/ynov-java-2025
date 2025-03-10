@@ -12,18 +12,12 @@ public class Person {
     private static nationality nationality;
 
     public enum nationality {
-        FRENCH("French"),
-        ENGLISH("English"),
-        GERMAN("German"),
-        ITALIAN("Italian"),
-        SPANISH("Spanish");
-        final String nationality;
-        nationality(String Country) {
-            this.nationality = Country;
-        };
-        public String getNationality() {
-            return nationality;
-        }
+        FRENCH,
+        AMERICAN,
+        ENGLISH,
+        GERMAN,
+        ITALIAN,
+        SPANISH,
     };
 
     public Person(String name, LocalDate birthDate, String gender, float height, float weight, nationality nationality) {
@@ -38,13 +32,14 @@ public class Person {
     public int age(LocalDate birthDate) {
         return Period.between(birthDate, LocalDate.now()).getYears();
     };
+
     public void display() {
         System.out.println("Name: " + name);
         System.out.println("Age: " + age(birthDate) );
         System.out.println("Gender: " + gender);
         System.out.println("Height: " + height);
         System.out.println("Weight: " + weight);
-        System.out.println("Nationality: " + nationality.getNationality());
+        System.out.println("Nationality: " + nationality);
     }
 
     public static void main(String[] args) {
