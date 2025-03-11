@@ -3,7 +3,7 @@ package fr.ynov.java.medium;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Person {
+public class  Person {
     private final String name;
     private final LocalDate birthDate;
     private final String gender;
