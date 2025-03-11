@@ -5,22 +5,13 @@ import java.time.Period;
 
 public class  Person {
     private final String name;
-    private final LocalDate birthDate;
+    private final String birthDate;
     private final String gender;
     private final float height;
     private final float weight;
-    private static nationality nationality;
+    private static Nationality nationality;
 
-    public enum nationality {
-        FRENCH,
-        AMERICAN,
-        ENGLISH,
-        GERMAN,
-        ITALIAN,
-        SPANISH,
-    };
-
-    public Person(String name, LocalDate birthDate, String gender, float height, float weight, nationality nationality) {
+    public Person(String name, String birthDate, String gender, float height, float weight, Nationality nationality) {
         this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
@@ -29,13 +20,17 @@ public class  Person {
         Person.nationality = nationality;
     };
 
+    public static LocalDate strToLocalDate(String date) {
+        return LocalDate.parse(date);
+    };
+
     public int age(LocalDate birthDate) {
         return Period.between(birthDate, LocalDate.now()).getYears();
     };
 
     public void display() {
         System.out.println("Name: " + name);
-        System.out.println("Age: " + age(birthDate) );
+        System.out.println("Age: " + age(strToLocalDate(birthDate)) );
         System.out.println("Gender: " + gender);
         System.out.println("Height: " + height);
         System.out.println("Weight: " + weight);
@@ -43,8 +38,7 @@ public class  Person {
     }
 
     public static void main(String[] args) {
-        Person person = new Person("John", LocalDate.of(1956, 1, 5), "F", 1.75f, 75.0f, nationality.FRENCH);
+        Person person = new Person("John", "1956-01-05", "F", 1.75f, 75.0f, nationality.FRENCH);
         person.display();
-
     }
 }
